@@ -1,0 +1,30 @@
+{
+  "name": "@bombitmanbomb/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src",
+	"scripts": {
+		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
+		"document": "jsdoc -t node_modules/docdash ./src/ -r -c jsdoc.json -d ./docs/",
+		"ready": "npm run document && npm run lint"
+	},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bombitmanbomb/Utils.git"
+  },
+  "author": "bombitmanbomb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bombitmanbomb/Utils/issues"
+  },
+  "homepage": "https://github.com/bombitmanbomb/Utils#readme",
+  "engines": {
+		"node": ">=14.14.0"
+	},
+	"devDependencies": {
+		"docdash": "^1.2.0",
+		"eslint": "^7.21.0",
+		"jsdoc": "^3.6.6",
+		"prettier": "^2.2.1"
+	}
+}
