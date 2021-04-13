@@ -24,7 +24,9 @@
 	"devDependencies": {
 		"docdash": "^1.2.0",
 		"eslint": "^7.21.0",
+		"eslint-plugin-jsdoc": "^32.3.0",
 		"jsdoc": "^3.6.6",
+		"jsdoc-tsimport-plugin": "^1.0.5",
 		"prettier": "^2.2.1"
 	}
 }

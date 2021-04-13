@@ -1,22 +1,25 @@
 //eslint-disable-next-line no-unused-vars
 const { Out } = require("./Out"); //lgtm [js/unused-local-variable] JSDoc Type Def
-/**
- * Create a Dictionary Object
+/**.
+ * Create a Dictionary Object.
  *
- * {@link #out Out} type can be replaced with [] in a var
+ * {@link #out Out} Type can be replaced with [] in a var
+ *
  * @class Dictionary
  * @template T, A
  */
 class Dictionary extends Array {
 	constructor() {
 		super();
+		Object.defineProperty(this, "hash", { value: {}, enumerable: false });
 	}
 	/**
 	 * Add an entry to the Dictionary.
 	 *
 	 * Will Error if Key already exists.
-	 * @param {T} Key - Value
-	 * @param {A} Value - Value
+	 *
+	 * @param {T} Key - Value.
+	 * @param {A} Value - Value.
 	 * @memberof Dictionary
 	 * @instance
 	 */
@@ -25,13 +28,15 @@ class Dictionary extends Array {
 			throw new Error(
 				"ArgumentException: An element with the same key already exists"
 			);
-		this.push({
-			Key,
-			Value,
-		});
+		this.hash[Key] =
+			this.push({
+				Key,
+				Value,
+			}) - 1;
 	}
-	/**
+	/**.
 	 * Attempt to add an entry to the Dictionary
+	 *
 	 * @param {T} Key
 	 * @param {A} Value
 	 * @memberof Dictionary
@@ -40,14 +45,11 @@ class Dictionary extends Array {
 	 */
 	TryAdd(Key, Value) {
 		if (this.ContainsKey(Key)) return false;
-		this.push({
-			Key,
-			Value,
-		});
-		return true;
+		return this.Add(Key, Value);
 	}
-	/**
+	/**.
 	 * Replace Key's value with new Value
+	 *
 	 * @param {T} key
 	 * @param {A} Value
 	 * @instance
@@ -56,41 +58,37 @@ class Dictionary extends Array {
 	 */
 	Replace(key, Value) {
 		if (!this.ContainsKey(key)) return false;
-		for (let object of this) {
-			if (object.Key === key) {
-				this[this.indexOf(object)].Value = Value;
-				return true;
-			}
-		}
-		return false;
+		this[this.hash[key]].Value = Value;
 	}
-	/**
+	/**.
 	 * Clear the Dictionary
+	 *
 	 * @instance
 	 * @memberof Dictionary
 	 */
 	Clear() {
 		this.splice(0, this.length);
+		this.ValidateHash();
 	}
 	CheckCount(func) {
 		if (func == null) return this.length;
 		return this.filter(func).length;
 	}
-	/**
+	/**.
 	 * Check if a Key exists
+	 *
 	 * @param {T} Key
 	 * @instance
 	 * @memberof Dictionary
 	 * @returns {boolean} - Key Found
 	 */
 	ContainsKey(Key) {
-		for (let object of this) {
-			if (object.Key === Key) return true;
-		}
+		if (this.hash[Key] != null) return true;
 		return false;
 	}
-	/**
+	/**.
 	 * Check if a Value exists in the Dictionary
+	 *
 	 * @param {A} Value
 	 * @instance
 	 * @memberof Dictionary
@@ -102,8 +100,9 @@ class Dictionary extends Array {
 		}
 		return false;
 	}
-	/**
+	/**.
 	 * Get the Capacity
+	 *
 	 * @deprecated
 	 * @instance
 	 * @memberof Dictionary
@@ -111,8 +110,9 @@ class Dictionary extends Array {
 	EnsureCapacity() {
 		return this.length;
 	}
-	/**
+	/**.
 	 * Remove an Item at a given Index
+	 *
 	 * @param {number} iIndex
 	 * @instance
 	 * @memberof Dictionary
@@ -122,10 +122,12 @@ class Dictionary extends Array {
 		if (vItem) {
 			this.splice(iIndex, 1);
 		}
+		this.ValidateHash();
 		return vItem;
 	}
-	/**
+	/**.
 	 * Remove a Key. Will error if Key does not exist
+	 *
 	 * @param {T} key
 	 * @instance
 	 * @memberof Dictionary
@@ -133,33 +135,24 @@ class Dictionary extends Array {
 	 */
 	Remove(key) {
 		if (!this.ContainsKey(key)) return false;
-		for (let object of this) {
-			if (object.Key === key) {
-				this.RemoveAt(this.indexOf(object));
-				return true;
-			}
-		}
-		return false;
+		this.RemoveAt(this.hash[key]);
+		return true;
 	}
 	/**
 	 * Attempt to remove a Key.
+	 *
 	 * @memberof Dictionary
 	 * @instance
 	 * @param {T} key
-	 * @returns {boolean} - Key Removed
+	 * @returns {boolean} - Key Removed.
 	 */
 	TryRemove(key) {
 		if (!this.ContainsKey(key)) return false;
-		for (let object of this) {
-			if (object.Key === key) {
-				this.RemoveAt(this.indexOf(object));
-				return true;
-			}
-		}
-		return false;
+		return this.Remove(key);
 	}
-	/**
+	/**.
 	 * Get the amount of items
+	 *
 	 * @instance
 	 * @readonly
 	 * @memberof Dictionary
@@ -167,24 +160,51 @@ class Dictionary extends Array {
 	get Count() {
 		return this.length;
 	}
-	/**
+	/**.
 	 * Get a key's value
+	 *
 	 * @param {T} key - Key
 	 * @param {Out<A>} out - Output Var
 	 * @returns {boolean} - Key Exists
 	 */
-	Get(key, out) {
+	Get(key, out = []) {
 		if (!this.ContainsKey(key)) return false;
-		for (let object of this) {
-			if (object.Key === key) {
-				out.Out = object.Value;
-				return true;
+		out.Out = this[this.hash[key]].Value;
+		return true;
+	}
+	/** Validate Internal Integrity.
+	 *
+	 * @returns {true} Validated.
+	 */
+	ValidateHash() {
+		//Validate Internal HashIndex
+		var keys = 0;
+		for (let key in this.hash) {
+			let flag = false;
+			let looseValues = {};
+			for (let object of this) {
+				if (looseValues[object.Key] == null) looseValues[object.Key] = false;
+				if (object.Key === key) flag = object;
+			}
+			if (flag != false) {
+				keys++;
+				looseValues[flag.Key] = true;
+				this.hash[key] = this.indexOf(flag);
+			} else {
+				delete this.hash[key];
 			}
 		}
-		return false; // How tf you manage that??
+		//Validate Values
+		if (this.length != keys) {
+			for (let i = 0; i < this.length; i++) {
+				if (this.hash[this[i].Key] == null) this.hash[this[i].Key] = i;
+			}
+		}
+		return true;
 	}
-	/**
+	/**.
 	 * Generate a Dictionary from an Object using Key:Value Pairs
+	 *
 	 * @param {Object} obj
 	 */
 	static ToDictionary(obj) {
@@ -194,8 +214,9 @@ class Dictionary extends Array {
 		}
 		return Dict;
 	}
-	/**
+	/**.
 	 * Reduce Callback
+	 *
 	 * @callback Dictionary.Reduce~callback
 	 * @param {*} [previousValue]
 	 * @param {*} [currentValue]
@@ -203,8 +224,9 @@ class Dictionary extends Array {
 	 * @param {any[]} [array]
 	 * @returns {*} Returned Value will set to set previousValue
 	 */
-	/**
+	/**.
 	 * Reduce a Dictionary's values down
+	 *
 	 * @param {Dictionary.Reduce~callback} callbackfn - Computation function
 	 * @param {*} InitialValue - Initial Value
 	 * @returns {*}
@@ -217,16 +239,17 @@ class Dictionary extends Array {
 	}
 	/**
 	 * @callback Dictionary.AddOrUpdate~callback
-	 * @param {T} Key - Current Key
-	 * @param {A} Value - Current Value
-	 * @returns {A} New Value
+	 * @param {T} Key - Current Key.
+	 * @param {A} Value - Current Value.
+	 * @returns {A} New Value.
 	 */
-	/**
-	 * Adds a new Value at Key
+	/**.
+	 * Adds a new Value at Key.
 	 *
-	 * if Key exists, Updates Key
+	 * If Key exists, Updates Key.
 	 *
-	 * if func is set, Programatically updates Key
+	 * If func is set, Programatically updates Key
+	 *
 	 * @param {T} key
 	 * @param {A} value
 	 * @param {Dictionary.AddOrUpdate~callback} [func]
@@ -248,8 +271,9 @@ class Dictionary extends Array {
 		let newValue = func(key, oldValue.Out);
 		if (this.Replace(key, newValue)) return newValue;
 	}
-	/**
+	/**.
 	 * Attempt to get Value, Sets Value to Out. Returns Boolean valueExists
+	 *
 	 * @param {A} value
 	 * @param {Out<A>} out
 	 * @returns {boolean} - Value Existed
@@ -260,8 +284,9 @@ class Dictionary extends Array {
 		if (out) this.Get(value, out);
 		return true;
 	}
-	/**
+	/**.
 	 * Return a value
+	 *
 	 * @param {T} key
 	 */
 	ReturnValue(key) {
