@@ -1,0 +1,5 @@
+# Ignore artifacts:
+docs/
+
+# Ignore all HTML files:
+*.html
