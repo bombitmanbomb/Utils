@@ -110,7 +110,10 @@ export class Dictionary<T extends string | number, A> extends Array {
 		return true;
 	}
 
-	public static ToDictionary(obj: any): Dictionary<string, any> {
+	public static ToDictionary(obj: {
+		[prop: string]: any;
+		[prop: number]: any;
+	}): Dictionary<string, any> {
 		const Dict: Dictionary<string, any> = new Dictionary();
 		for (const key in obj) {
 			Dict.Add(key, obj[key]);
@@ -125,12 +128,12 @@ export class Dictionary<T extends string | number, A> extends Array {
 		return true;
 	}
 
-	public ReturnValue(Key: T, out: Out<A> = Out.Default()) {
+	public ReturnValue(Key: T, out: Out<A> = Out.Default() as Out<A>): A {
 		this.TryGetValue(Key, out);
-		return out.Out;
+		return out.Out as A;
 	}
 
-	public GetEnumerator() {
+	public GetEnumerator(): Enumerator<Dictionary<T, A>> {
 		return new Enumerator(this);
 	}
 }
