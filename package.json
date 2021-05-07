@@ -19,14 +19,17 @@
 	},
 	"homepage": "https://github.com/bombitmanbomb/Utils#readme",
 	"engines": {
-		"node": ">=14.14.0"
+		"node": ">=14.0.0"
 	},
 	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^4.22.1",
+		"@typescript-eslint/parser": "^4.22.1",
 		"docdash": "^1.2.0",
 		"eslint": "^7.21.0",
 		"eslint-plugin-jsdoc": "^32.3.0",
 		"jsdoc": "^3.6.6",
 		"jsdoc-tsimport-plugin": "^1.0.5",
-		"prettier": "^2.2.1"
+		"prettier": "^2.2.1",
+		"typescript": "^4.2.4"
 	}
 }
