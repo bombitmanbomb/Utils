@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "dist",
 	"types": "dist",
+	"files": ["dist"],
 	"scripts": {
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
 		"document": "jsdoc -t node_modules/docdash ./src/ -r -c jsdoc.json -d ./docs/",
