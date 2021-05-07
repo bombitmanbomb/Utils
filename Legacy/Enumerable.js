@@ -14,21 +14,21 @@ class Enumerable extends Object {
 		let keys;
 		let i;
 		switch ($b.constructor.name) {
-		case "Array":
-		case "List":
-			keys = $b;
-			for (i = 0; i < keys.length; i++) {
-				this[keys[i]] = i;
-			}
-			break;
-		case "Object":
-			keys = Object.keys($b);
-			for (i = 0; i < keys.length; i++) {
-				this[keys[i]] = $b[[keys[i]]]; //lgtm [js/implicit-operand-conversion]
-			}
-			break;
-		default:
-			throw new Error("Invalid Data, Expected type: <Array, List, Object>");
+			case "Array":
+			case "List":
+				keys = $b;
+				for (i = 0; i < keys.length; i++) {
+					this[keys[i]] = i;
+				}
+				break;
+			case "Object":
+				keys = Object.keys($b);
+				for (i = 0; i < keys.length; i++) {
+					this[keys[i]] = $b[[keys[i]]]; //lgtm [js/implicit-operand-conversion]
+				}
+				break;
+			default:
+				throw new Error("Invalid Data, Expected type: <Array, List, Object>");
 		}
 		Object.freeze(this);
 	}
