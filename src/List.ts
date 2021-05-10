@@ -37,8 +37,13 @@ export class List<T> extends Array {
 	 */
 	public static ToList(Props: any[]): List<any> {
 		const t: List<any> = new List();
-		for (const item of Props) {
-			t.Add(item);
+		if (!Props) return t
+		try {
+			for (const item of Props) {
+				t.Add(item);
+			}
+		} catch (error) {
+			return t
 		}
 		return t;
 	}
