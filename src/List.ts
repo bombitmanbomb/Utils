@@ -21,6 +21,18 @@ export class List<T> extends Array {
 		return this.push(Value);
 	}
 	/**
+	 * Add a range of values
+	 */
+	public AddRange(range:List<T>):number {
+		if (range == null) throw new Error("ArgumentNullException");
+		if (!(range instanceof List))
+			throw new Error("AddRange: Expected type List")
+		for (let item of range){
+			this.Add(item);
+		}
+		return this.Count - 1
+	}
+	/**
 	 * Turn a List to an arrau
 	 */
 	public static ToList(Props: any[]): List<any> {
