@@ -33,7 +33,7 @@ export class List<T> extends Array {
 		return this.Count - 1;
 	}
 	/**
-	 * Turn a List to an arrau
+	 * Turn an array into a list
 	 */
 	public static ToList(Props: any[]): List<any> {
 		const t: List<any> = new List();
