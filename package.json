@@ -1,10 +1,12 @@
 {
 	"name": "@bombitmanbomb/utils",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "",
 	"main": "dist",
 	"types": "dist",
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
 		"document": "jsdoc -t node_modules/docdash ./src/ -r -c jsdoc.json -d ./docs/",
@@ -26,6 +28,7 @@
 		"node": ">=14.0.0"
 	},
 	"devDependencies": {
+		"@types/core-js": "^2.5.4",
 		"@typescript-eslint/eslint-plugin": "^4.22.1",
 		"@typescript-eslint/parser": "^4.22.1",
 		"docdash": "^1.2.0",
@@ -34,6 +37,7 @@
 		"jsdoc": "^3.6.6",
 		"jsdoc-tsimport-plugin": "^1.0.5",
 		"prettier": "^2.2.1",
+		"typedoc": "^0.20.36",
 		"typescript": "^4.2.4"
 	}
 }
