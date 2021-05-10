@@ -12,7 +12,7 @@
 		"document": "jsdoc -t node_modules/docdash ./src/ -r -c jsdoc.json -d ./docs/",
 		"ready": "npm run document && npm run lint",
 		"build": "Del dist /S /Q && tsc",
-		"prepublish": "tsc"
+		"prepare": "tsc"
 	},
 	"repository": {
 		"type": "git",
