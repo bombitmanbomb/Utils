@@ -9,6 +9,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	constructor() {
 		super();
 		this.hash = {};
+		Object.defineProperty(this, "hash", {value:{}, enumerable:false})
 	}
 	/**
 	 * Add a key to the Dictionary.
