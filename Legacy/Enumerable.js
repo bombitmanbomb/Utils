@@ -24,7 +24,7 @@ class Enumerable extends Object {
 			case "Object":
 				keys = Object.keys($b);
 				for (i = 0; i < keys.length; i++) {
-					this[keys[i]] = $b[[keys[i]]]; //lgtm [js/implicit-operand-conversion]
+					this[keys[i]] = $b[keys[i]]; //lgtm [js/implicit-operand-conversion]
 				}
 				break;
 			default:

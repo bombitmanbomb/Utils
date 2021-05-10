@@ -167,20 +167,24 @@ export class Dictionary<T extends string | number, A> extends Array {
 	/**
 	 * Add an item or update a matching item
 	 */
-	public AddOrUpdate(Key:T, Value:A, ReplaceFunc:(Key:T,OldValue:A)=>A): A {
-		if (!this.ContainsKey(Key)){
-			this.TryAdd(Key, Value)
-			return Value as A
+	public AddOrUpdate(
+		Key: T,
+		Value: A,
+		ReplaceFunc: (Key: T, OldValue: A) => A
+	): A {
+		if (!this.ContainsKey(Key)) {
+			this.TryAdd(Key, Value);
+			return Value as A;
 		}
-		if (ReplaceFunc==null){
-			this.Replace(Key, Value)
-			return Value as A
+		if (ReplaceFunc == null) {
+			this.Replace(Key, Value);
+			return Value as A;
 		}
-		let OldValue = new Out() as Out<A>
-		this.Get(Key, OldValue)
-		let newValue = ReplaceFunc(Key, OldValue.Out as A);
-		this.Replace(Key, newValue)
-		return newValue as A
+		const OldValue = new Out() as Out<A>;
+		this.Get(Key, OldValue);
+		const newValue = ReplaceFunc(Key, OldValue.Out as A);
+		this.Replace(Key, newValue);
+		return newValue as A;
 	}
 	/**
 	 * Try and get a value
@@ -200,7 +204,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	}
 
 	/**
-	 * Get the struct enumerator. 
+	 * Get the struct enumerator.
 	 * Only use this if you know what you're doing.
 	 */
 	public GetEnumerator(): Enumerator<Dictionary<T, A>> {

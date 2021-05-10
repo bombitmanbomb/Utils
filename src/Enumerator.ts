@@ -17,7 +17,7 @@ export class Enumerator<T extends Dictionary<any, any> | List<any>> {
 	constructor(dict: T) {
 		this.Struct = dict;
 		this.Position = -1;
-		
+
 		this.Current = null;
 	}
 	/**

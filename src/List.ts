@@ -23,27 +23,27 @@ export class List<T> extends Array {
 	/**
 	 * Add a range of values
 	 */
-	public AddRange(range:List<T>):number {
+	public AddRange(range: List<T>): number {
 		if (range == null) throw new Error("ArgumentNullException");
 		if (!(range instanceof List))
-			throw new Error("AddRange: Expected type List")
-		for (let item of range){
+			throw new Error("AddRange: Expected type List");
+		for (const item of range) {
 			this.Add(item);
 		}
-		return this.Count - 1
+		return this.Count - 1;
 	}
 	/**
 	 * Turn a List to an arrau
 	 */
 	public static ToList(Props: any[]): List<any> {
 		const t: List<any> = new List();
-		if (!Props) return t
+		if (!Props) return t;
 		try {
 			for (const item of Props) {
 				t.Add(item);
 			}
 		} catch (error) {
-			return t
+			return t;
 		}
 		return t;
 	}
@@ -106,7 +106,7 @@ export class List<T> extends Array {
 	 * Get a random value
 	 */
 	public GetRandom(): T {
-		return this[~~(Math.random() * this.Count)]
+		return this[~~(Math.random() * this.Count)];
 	}
 	/**
 	 * Get the enumerator for the class
