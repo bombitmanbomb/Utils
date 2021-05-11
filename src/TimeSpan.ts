@@ -9,14 +9,14 @@ export class TimeSpan {
 	/**
 	 * Create a TimeSpan object set at num seconds
 	 */
-	public static fromSeconds(num: number): number {
-		return num * 1000;
+	public static fromSeconds(num: number): TimeSpan {
+		return new TimeSpan(num * 1000);
 	}
 	/**
 	 * Create a TimeSpan object set at num minutes
 	 */
-	public static fromMinutes(num: number): number {
-		return num * 60000;
+	public static fromMinutes(num: number): TimeSpan {
+		return new TimeSpan(num * 60000);
 	}
 	/**
 	 * Return a promise that will resolve after TimeSeconds
