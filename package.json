@@ -1,11 +1,11 @@
 {
 	"name": "@bombitmanbomb/utils",
-	"version": "2.1.5",
+	"version": "2.1.6",
 	"description": "",
 	"main": "lib",
 	"types": "lib",
 	"files": [
-		"dist"
+		"lib"
 	],
 	"scripts": {
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
