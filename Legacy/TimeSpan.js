@@ -8,11 +8,11 @@ class TimeSpan {
 		this.msecs = num != null ? num : 0;
 	}
 	static fromSeconds(num) {
-		return num * 1000;
+		return new TimeSpan(num * 1000);
 	}
 
 	static fromMinutes(num) {
-		return num * 60000;
+		return new TimeSpan(num * 60000);
 	}
 
 	/**
