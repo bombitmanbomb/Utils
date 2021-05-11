@@ -77,4 +77,4 @@ typings/
 
 tsconfig.tsbuildinfo
 
-dist/
+lib/

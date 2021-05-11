@@ -1,9 +1,9 @@
 {
 	"name": "@bombitmanbomb/utils",
-	"version": "2.1.4",
+	"version": "2.1.5",
 	"description": "",
-	"main": "dist",
-	"types": "dist",
+	"main": "lib",
+	"types": "lib",
 	"files": [
 		"dist"
 	],
