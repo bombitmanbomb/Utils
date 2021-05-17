@@ -9,7 +9,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	constructor() {
 		super();
 		this.hash = {};
-		Object.defineProperty(this, "hash", {value:{}, enumerable:false})
+		Object.defineProperty(this, "hash", { value: {}, enumerable: false });
 	}
 	/**
 	 * Add a key to the Dictionary.
@@ -123,30 +123,11 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 * Only use this if you know what you're doing
 	 */
 	public ValidateHash(): true {
-		let keys = 0;
-		for (const key in this.hash) {
-			let flag: Entry<T, A> | null = null;
-			const looseValues: { [prop: string]: boolean } = {};
-			for (const object of this) {
-				if (looseValues[object.Key.toString()] == null)
-					looseValues[object.Key.toString()] = false;
-				if (object.Key.toString() === key) {
-					flag = object;
-					break;
-				}
-				if (flag !== null) {
-					keys++;
-					looseValues[flag["Key"]] = true;
-					this.hash[key] = this.indexOf(flag);
-				} else {
-					delete this.hash[key];
-				}
-			}
-		}
-		if (this.Count != keys) {
-			for (let i = 0; i < this.Count; i++) {
-				if (this.hash[this[i].Key] == null) this.hash[this[i].Key] = i;
-			}
+		this.hash = {};
+		for (let i = 0; i < this.Count; i++) {
+			const key = this[i]?.Key?.toString();
+			if (key == null) continue;
+			this.hash[key] = i;
 		}
 		return true;
 	}
