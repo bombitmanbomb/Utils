@@ -43,6 +43,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 * Check if a key exists.
 	 */
 	public ContainsKey(Key: T): boolean {
+		if (Key == null) return false
 		if (this.hash[Key.toString()] != null) return true;
 		return false;
 	}
