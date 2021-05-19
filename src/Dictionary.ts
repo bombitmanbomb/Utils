@@ -15,7 +15,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 * Add a key to the Dictionary.
 	 */
 	public Add(Key: T, Value: A): boolean {
-		if (Key == null) return false
+		if (Key == null) return false;
 		if (this.ContainsKey(Key))
 			throw new Error(
 				"ArgumentException: An element with the same key already exists"
@@ -44,7 +44,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 * Check if a key exists.
 	 */
 	public ContainsKey(Key: T): boolean {
-		if (Key == null) return false
+		if (Key == null) return false;
 		if (this.hash[Key.toString()] != null) return true;
 		return false;
 	}
