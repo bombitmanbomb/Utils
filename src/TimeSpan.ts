@@ -1,3 +1,4 @@
+import { CancellationTokenSource } from "./CancellationTokenSource";
 /**
  * Time Util Class
  */
@@ -21,13 +22,36 @@ export class TimeSpan {
 	/**
 	 * Return a promise that will resolve after TimeSeconds
 	 */
-	public static Delay(timespan: TimeSpan | number): Promise<null> {
+	public static Delay(
+		timespan: TimeSpan | number,
+		token?: CancellationTokenSource
+	): Promise<null> {
 		let Time: TimeSpan;
 		if (!(timespan instanceof TimeSpan)) {
 			Time = new TimeSpan(timespan);
 		} else {
 			Time = timespan;
 		}
-		return new Promise((resolve) => setTimeout(resolve, Time.msecs));
+		return new Promise((resolve) => {
+			const abort = token as CancellationTokenSource;
+			let listener: null | (() => void) = null;
+			let resolved = false;
+			const timeout = setTimeout(() => {
+				if (resolved) return;
+				resolved = true;
+				resolve(null);
+				if (listener != null && abort != null)
+					abort.signal.removeEventListener("abort", listener);
+			}, Time.msecs);
+			listener = () => {
+				if (resolved) return;
+				resolved = true;
+				clearTimeout(timeout);
+				resolve(null);
+			};
+			if (abort != null) {
+				abort.signal.addEventListener("abort", listener);
+			}
+		});
 	}
 }
