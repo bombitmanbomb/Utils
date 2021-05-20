@@ -5,3 +5,4 @@ export { Out } from "./Out";
 export { TimeSpan } from "./TimeSpan";
 export { Enumerable } from "./Enumerable";
 export { Uri } from "./Uri";
+export { StringBuilder } from "./StringBuilder";
