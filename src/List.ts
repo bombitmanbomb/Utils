@@ -133,4 +133,15 @@ export class List<T> extends Array {
 	public GetEnumerator(): Enumerator<List<T>> {
 		return new Enumerator(this);
 	}
+	public toJSON(): T[] {
+		const list = [] as T[];
+		for (const item of this) {
+			try {
+				list.push(item.toJSON());
+			} catch (error) {
+				list.push(item);
+			}
+		}
+		return list;
+	}
 }
