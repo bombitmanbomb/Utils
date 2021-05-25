@@ -213,6 +213,14 @@ export class Dictionary<T extends string | number, A> extends Array {
 	public GetEnumerator(): Enumerator<Dictionary<T, A>> {
 		return new Enumerator(this);
 	}
+
+	public toJSON(): { [prop: string]: A } {
+		const response = {};
+		for (const property of this) {
+			Object.defineProperty(response, property.Key, { value: property.Value });
+		}
+		return response;
+	}
 }
 interface Hash {
 	[prop: string]: number;
