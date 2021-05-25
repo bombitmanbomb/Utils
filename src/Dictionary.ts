@@ -147,7 +147,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 				Dict.Add(key.toString(), obj[key]);
 			}
 		} catch (error) {
-			return Dict
+			return Dict;
 		}
 		return Dict;
 	}
@@ -171,9 +171,9 @@ export class Dictionary<T extends string | number, A> extends Array {
 				}
 			}
 		} catch (error) {
-			return Dict
+			return Dict;
 		}
-	
+
 		return Dict;
 	}
 	/**
