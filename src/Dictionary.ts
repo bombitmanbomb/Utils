@@ -142,8 +142,12 @@ export class Dictionary<T extends string | number, A> extends Array {
 		[prop: number]: any;
 	}): Dictionary<string, any> {
 		const Dict: Dictionary<string, any> = new Dictionary();
-		for (const key in obj) {
-			Dict.Add(key.toString(), obj[key]);
+		try {
+			for (const key in obj) {
+				Dict.Add(key.toString(), obj[key]);
+			}
+		} catch (error) {
+			return Dict
 		}
 		return Dict;
 	}
@@ -158,13 +162,18 @@ export class Dictionary<T extends string | number, A> extends Array {
 		constructor: any
 	): Dictionary<string, any> {
 		const Dict: Dictionary<string, any> = new Dictionary();
-		for (const key in obj) {
-			try {
-				Dict.Add(key.toString(), constructor(obj[key]));
-			} catch (error) {
-				Dict.Add(key.toString(), new constructor(obj[key]));
+		try {
+			for (const key in obj) {
+				try {
+					Dict.Add(key.toString(), constructor(obj[key]));
+				} catch (error) {
+					Dict.Add(key.toString(), new constructor(obj[key]));
+				}
 			}
+		} catch (error) {
+			return Dict
 		}
+	
 		return Dict;
 	}
 	/**
