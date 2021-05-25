@@ -48,6 +48,25 @@ export class List<T> extends Array {
 		return t;
 	}
 	/**
+	 * Turn an array into a list containing type Constructor
+	 */
+	public static ToListAs(Props: any[], constructor: any): List<any> {
+		const t: List<any> = new List();
+		if (!Props) return t;
+		try {
+			for (const item of Props) {
+				try {
+					t.Add(constructor(item));
+				} catch (error) {
+					t.Add(new constructor(item));
+				}
+			}
+		} catch (error) {
+			return t;
+		}
+		return t;
+	}
+	/**
 	 * Clear the list
 	 */
 	public Clear(): void {

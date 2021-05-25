@@ -147,7 +147,26 @@ export class Dictionary<T extends string | number, A> extends Array {
 		}
 		return Dict;
 	}
-
+	/**
+	 * Create a dictionary from an object containing object constructor
+	 */
+	public static ToDictionaryAs(
+		obj: {
+			[prop: string]: any;
+			[prop: number]: any;
+		},
+		constructor: any
+	): Dictionary<string, any> {
+		const Dict: Dictionary<string, any> = new Dictionary();
+		for (const key in obj) {
+			try {
+				Dict.Add(key.toString(), constructor(obj[key]));
+			} catch (error) {
+				Dict.Add(key.toString(), new constructor(obj[key]));
+			}
+		}
+		return Dict;
+	}
 	/**
 	 * Add an item or update a matching item
 	 */
