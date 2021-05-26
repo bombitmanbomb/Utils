@@ -1,5 +1,5 @@
 export class StringBuilder {
-	private String: string[];
+	public String: string[];
 	constructor() {
 		this.String = [];
 	}
