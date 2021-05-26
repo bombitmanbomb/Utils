@@ -21,6 +21,13 @@ export class List<T> extends Array {
 		return this.push(Value);
 	}
 	/**
+	 * Add a Unique value
+	 */
+	public AddUnique(Value: T): number {
+		if (!this.Contains(Value)) return this.push(Value);
+		return -1;
+	}
+	/**
 	 * Add a range of values
 	 */
 	public AddRange(range: List<T>): number {
