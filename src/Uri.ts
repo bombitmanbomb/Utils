@@ -34,6 +34,9 @@ export class Uri {
 	static EscapeDataString(dat: string): string {
 		return encodeURI(dat);
 	}
+	public get Query():string{
+		return this._raw.query? "?"+this._raw.query : null as unknown as string
+	}
 }
 function uri_parse(uriString: string): Component {
 	const components: Component = { path: "" };
