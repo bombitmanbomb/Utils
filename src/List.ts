@@ -27,7 +27,7 @@ export class List<T> extends Array {
 		if (!this.Contains(Value)) return this.push(Value);
 		return -1;
 	}
-	 /**
+	/**
 	 * Check if two arrays are equal
 	 */
 	public ElementWiseEquals<T>(other: List<T>): boolean {
