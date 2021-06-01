@@ -91,9 +91,9 @@ export class Dictionary<T extends string | number, A> extends Array {
 	/**
 	 * Remove a value by Key
 	 */
-	public Remove(Key: T): boolean {
+	public Remove(Key: T, out:Out<A> = []): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		this.RemoveAt(this.hash[Key.toString()]);
+		out.Out = this.RemoveAt(this.hash[Key.toString()]).Value
 		return true;
 	}
 
