@@ -100,8 +100,9 @@ export class Dictionary<T extends string | number, A> extends Array {
 	/**
 	 * Try and remove a value
 	 */
-	public TryRemove(Key: T): boolean {
+	public TryRemove(Key: T,out:Out<A> = []): boolean {
 		if (!this.ContainsKey(Key)) return false;
+		out.Out = this.RemoveAt(this.hash[Key.toString()]).Value
 		return this.Remove(Key);
 	}
 	/**
