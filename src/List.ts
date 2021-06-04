@@ -102,7 +102,7 @@ export class List<T> extends Array {
 		this.Filled++;
 		this.EnsureCapacity();
 	}
-	public CopyTo(other: Array<T>, arrayIndex = 0, length: number) {
+	public CopyTo(other: Array<T>, arrayIndex = 0, length: number): void {
 		for (let i = 0; i < length ?? this.length; i++)
 			other[i + arrayIndex] = this[i];
 	}
@@ -173,7 +173,7 @@ export class List<T> extends Array {
 	 * Get the count of items in the list.
 	 */
 	public get Count(): number {
-		return this.length;
+		return this.Filled;
 	}
 	/**
 	 * Remove the First instance of a value.
@@ -220,6 +220,9 @@ export class List<T> extends Array {
 	 */
 	public GetRandom(): T {
 		return this[~~(Math.random() * this.Count)];
+	}
+	public TrimExcess(): void {
+		this.Capacity = this.Filled;
 	}
 	/**
 	 * Get the enumerator for the class
