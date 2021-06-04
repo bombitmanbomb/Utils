@@ -106,9 +106,11 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite"><a href="list.list-1.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited tsd-is-external">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="list.list-1.html#_capacity" class="tsd-kind-icon">_capacity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="list.list-1.html#_filled" class="tsd-kind-icon">_filled</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="list.list-1.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="list.list-1.html#lastitem" class="tsd-kind-icon">last<wbr>Item</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="list.list-1.html#length" class="tsd-kind-icon">length</a></li>
@@ -118,7 +120,9 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="list.list-1.html#capacity" class="tsd-kind-icon">Capacity</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="list.list-1.html#count" class="tsd-kind-icon">Count</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="list.list-1.html#filled" class="tsd-kind-icon">Filled</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -129,11 +133,16 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#addunique" class="tsd-kind-icon">Add<wbr>Unique</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#clear" class="tsd-kind-icon">Clear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#contains" class="tsd-kind-icon">Contains</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#copyto" class="tsd-kind-icon">Copy<wbr>To</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="list.list-1.html#elementwiseequals" class="tsd-kind-icon">Element<wbr>Wise<wbr>Equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="list.list-1.html#ensurecapacity" class="tsd-kind-icon">Ensure<wbr>Capacity</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#getenumerator" class="tsd-kind-icon">Get<wbr>Enumerator</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#getrandom" class="tsd-kind-icon">Get<wbr>Random</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#insert" class="tsd-kind-icon">Insert</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="list.list-1.html#nextfree" class="tsd-kind-icon">Next<wbr>Free</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#remove" class="tsd-kind-icon">Remove</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#removeat" class="tsd-kind-icon">Remove<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#removerange" class="tsd-kind-icon">Remove<wbr>Range</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#takerandom" class="tsd-kind-icon">Take<wbr>Random</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="list.list-1.html#trygetvalue" class="tsd-kind-icon">Try<wbr>Get<wbr>Value</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="list.list-1.html#_symbol_iterator_" class="tsd-kind-icon">[<wbr>Symbol.iterator]</a></li>
@@ -215,6 +224,7 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>List&lt;T&gt;<span class="tsd-signature-symbol">(</span>Capacity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="list.list-1.html" class="tsd-signature-type" data-tsd-kind="Class">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 						<li class="tsd-signature tsd-kind-icon">new <wbr>List&lt;T&gt;<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="list.list-1.html" class="tsd-signature-type" data-tsd-kind="Class">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -222,7 +232,28 @@
 							<aside class="tsd-sources">
 								<p>Overrides Array.constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L7">src/List.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L7">src/List.ts:7</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>Capacity: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="list.list-1.html" class="tsd-signature-type" data-tsd-kind="Class">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides Array.constructor</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L8">src/List.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -242,8 +273,28 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_capacity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _capacity</h3>
+					<div class="tsd-signature tsd-kind-icon">_capacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L31">src/List.ts:31</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_filled" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _filled</h3>
+					<div class="tsd-signature tsd-kind-icon">_filled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L30">src/List.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 					<a name="lastindex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> last<wbr>Index</h3>
@@ -296,6 +347,38 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="capacity" class="tsd-anchor"></a>
+					<h3>Capacity</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> Capacity<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> Capacity<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L43">src/List.ts:43</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L46">src/List.ts:46</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
 					<a name="count" class="tsd-anchor"></a>
 					<h3>Count</h3>
@@ -306,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L97">src/List.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L175">src/List.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,6 +398,38 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="filled" class="tsd-anchor"></a>
+					<h3>Filled</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> Filled<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> Filled<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L33">src/List.ts:33</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L36">src/List.ts:36</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -331,7 +446,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L20">src/List.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L57">src/List.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -359,7 +474,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L39">src/List.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L85">src/List.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -387,7 +502,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L26">src/List.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L72">src/List.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -415,7 +530,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L85">src/List.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L161">src/List.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -437,7 +552,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L91">src/List.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L169">src/List.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -455,6 +570,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="copyto" class="tsd-anchor"></a>
+					<h3>Copy<wbr>To</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">Copy<wbr>To<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span>, arrayIndex<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, length<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L105">src/List.ts:105</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>arrayIndex: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+								</li>
+								<li>
+									<h5>length: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 					<a name="elementwiseequals" class="tsd-anchor"></a>
 					<h3>Element<wbr>Wise<wbr>Equals</h3>
@@ -465,7 +609,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L33">src/List.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L79">src/List.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -489,6 +633,23 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="ensurecapacity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> Ensure<wbr>Capacity</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">Ensure<wbr>Capacity<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L124">src/List.ts:124</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getenumerator" class="tsd-anchor"></a>
 					<h3>Get<wbr>Enumerator</h3>
@@ -499,7 +660,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L146">src/List.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L227">src/List.ts:227</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -521,7 +682,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L140">src/List.ts:140</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L221">src/List.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,16 +695,59 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="remove" class="tsd-anchor"></a>
-					<h3>Remove</h3>
+					<a name="insert" class="tsd-anchor"></a>
+					<h3>Insert</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">Remove<span class="tsd-signature-symbol">(</span>iValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">Insert<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L104">src/List.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L100">src/List.ts:100</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>item: <span class="tsd-signature-type">T</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="nextfree" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> Next<wbr>Free</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">Next<wbr>Free<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L136">src/List.ts:136</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>Remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">Remove<span class="tsd-signature-symbol">(</span>iValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L182">src/List.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -555,10 +759,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>iValue: <span class="tsd-signature-type">number</span></h5>
+									<h5>iValue: <span class="tsd-signature-type">T</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -572,7 +776,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L114">src/List.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L193">src/List.ts:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -591,6 +795,32 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removerange" class="tsd-anchor"></a>
+					<h3>Remove<wbr>Range</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">Remove<wbr>Range<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="list.list-1.html" class="tsd-signature-type" data-tsd-kind="Class">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L94">src/List.ts:94</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>count: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="list.list-1.html" class="tsd-signature-type" data-tsd-kind="Class">List</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="takerandom" class="tsd-anchor"></a>
 					<h3>Take<wbr>Random</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -600,7 +830,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L134">src/List.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L215">src/List.ts:215</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -622,7 +852,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L125">src/List.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L206">src/List.ts:206</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2430,7 +2660,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L149">src/List.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L230">src/List.ts:230</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -2664,7 +2894,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L51">src/List.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L112">src/List.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2692,7 +2922,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/a55db76/src/List.ts#L66">src/List.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/bombitmanbomb/Utils/blob/cc5ff6f/src/List.ts#L142">src/List.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -4718,6 +4948,12 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite">
 								<a href="list.list-1.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="list.list-1.html#_capacity" class="tsd-kind-icon">_capacity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="list.list-1.html#_filled" class="tsd-kind-icon">_filled</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="list.list-1.html#lastindex" class="tsd-kind-icon">last<wbr>Index</a>
 							</li>
@@ -4730,8 +4966,14 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external">
 								<a href="list.list-1.html#_symbol_species_" class="tsd-kind-icon">[<wbr>Symbol.species]</a>
 							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="list.list-1.html#capacity" class="tsd-kind-icon">Capacity</a>
+							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="list.list-1.html#count" class="tsd-kind-icon">Count</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="list.list-1.html#filled" class="tsd-kind-icon">Filled</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="list.list-1.html#add" class="tsd-kind-icon">Add</a>
@@ -4748,8 +4990,14 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="list.list-1.html#contains" class="tsd-kind-icon">Contains</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="list.list-1.html#copyto" class="tsd-kind-icon">Copy<wbr>To</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="list.list-1.html#elementwiseequals" class="tsd-kind-icon">Element<wbr>Wise<wbr>Equals</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="list.list-1.html#ensurecapacity" class="tsd-kind-icon">Ensure<wbr>Capacity</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="list.list-1.html#getenumerator" class="tsd-kind-icon">Get<wbr>Enumerator</a>
@@ -4758,10 +5006,19 @@
 								<a href="list.list-1.html#getrandom" class="tsd-kind-icon">Get<wbr>Random</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="list.list-1.html#insert" class="tsd-kind-icon">Insert</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="list.list-1.html#nextfree" class="tsd-kind-icon">Next<wbr>Free</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="list.list-1.html#remove" class="tsd-kind-icon">Remove</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="list.list-1.html#removeat" class="tsd-kind-icon">Remove<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="list.list-1.html#removerange" class="tsd-kind-icon">Remove<wbr>Range</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="list.list-1.html#takerandom" class="tsd-kind-icon">Take<wbr>Random</a>
@@ -4990,6 +5247,11 @@
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
