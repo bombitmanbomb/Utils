@@ -5,26 +5,72 @@ import { Enumerator } from "./Enumerator";
  * List Class
  */
 export class List<T> extends Array {
+	constructor(Capacity: number);
+	constructor(...props: T[]);
 	constructor(...props: T[]) {
-		super();
 		if (props.length === 0) {
+			super();
+			this.Capacity = 0;
+			this.Filled = 0;
 			return;
 		}
+		if (props.length === 1 && typeof props[0] == "number") {
+			super((props[0] as unknown) as number);
+			this.Capacity = (props[0] as unknown) as number;
+			this.Filled = 0;
+			return;
+		}
+		super();
+		this.Capacity = 0;
+		this.Filled = 0;
 		for (const item of props) {
 			this.Add(item);
 		}
+	}
+	private _filled!: number;
+	private _capacity!: number;
+
+	public get Filled(): number {
+		return this._filled ?? 0;
+	}
+	public set Filled(value: number) {
+		Object.defineProperty(this, "_filled", {
+			value,
+			enumerable: false,
+			writable: true,
+		});
+	}
+	public get Capacity(): number {
+		return this._capacity;
+	}
+	public set Capacity(value: number) {
+		Object.defineProperty(this, "_capacity", {
+			value,
+			enumerable: false,
+			writable: true,
+		});
+		this.EnsureCapacity();
 	}
 	/**
 	 * Add a value
 	 */
 	public Add(Value: T): number {
-		return this.push(Value);
+		if (this.Filled >= this.Capacity) {
+			const index = this.push(Value);
+			this.Capacity++;
+			this.Filled++;
+			return index;
+		}
+		const index = this.NextFree();
+		this[index] = Value;
+		this.Filled++;
+		return index;
 	}
 	/**
 	 * Add a Unique value
 	 */
 	public AddUnique(Value: T): number {
-		if (!this.Contains(Value)) return this.push(Value);
+		if (!this.Contains(Value)) return this.Add(Value);
 		return -1;
 	}
 	/**
@@ -45,6 +91,21 @@ export class List<T> extends Array {
 		}
 		return this.Count - 1;
 	}
+	public RemoveRange(index: number, count: number): List<T> {
+		const removed = this.splice(index, count) as List<T>;
+		this.EnsureCapacity();
+		this.Filled -= removed.length;
+		return removed;
+	}
+	public Insert(index: number, item: T): void {
+		this.splice(index, 0, item);
+		this.Filled++;
+		this.EnsureCapacity();
+	}
+	public CopyTo(other: Array<T>, arrayIndex = 0, length: number) {
+		for (let i = 0; i < length ?? this.length; i++)
+			other[i + arrayIndex] = this[i];
+	}
 	/**
 	 * Turn an array into a list
 	 */
@@ -59,6 +120,21 @@ export class List<T> extends Array {
 			return t;
 		}
 		return t;
+	}
+	private EnsureCapacity(): void {
+		if (this.Filled > this.Capacity) {
+			this.Capacity += this.Filled - this.Capacity;
+		} else if (this.Capacity > this.length) {
+			while (this.length < this.Capacity) this.push((void 0 as unknown) as T);
+		} else
+			while (this.Capacity < this.length) {
+				const next = this.NextFree();
+				if (next == -1) break;
+				this.splice(next, 1);
+			}
+	}
+	private NextFree(): number {
+		return this.findIndex((v) => v == void 0);
 	}
 	/**
 	 * Turn an array into a list containing type Constructor
@@ -84,6 +160,8 @@ export class List<T> extends Array {
 	 */
 	public Clear(): void {
 		this.splice(0, this.length);
+		this.Capacity = 0;
+		this.Filled = 0;
 	}
 	/**
 	 * Check if the list contains a value
@@ -101,12 +179,13 @@ export class List<T> extends Array {
 	 * Remove the First instance of a value.
 	 * if no value returns -1
 	 */
-	public Remove(iValue: number): number {
+	public Remove(iValue: T): T {
 		const iIndex = this.indexOf(iValue);
 		if (~iIndex) {
 			this.RemoveAt(iIndex);
 		}
-		return iIndex;
+		this.EnsureCapacity();
+		return iValue;
 	}
 	/**
 	 * Remove a value at a given index
@@ -115,7 +194,9 @@ export class List<T> extends Array {
 		const vItem = this[iIndex];
 		if (vItem) {
 			this.splice(iIndex, 1);
+			this.Filled--;
 		}
+		this.EnsureCapacity();
 		return vItem;
 	}
 	/**
