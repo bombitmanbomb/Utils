@@ -102,8 +102,8 @@ export class List<T> extends Array {
 		this.Filled++;
 		this.EnsureCapacity();
 	}
-	public CopyTo(other: Array<T>, arrayIndex = 0, length: number): void {
-		for (let i = 0; i < length ?? this.length; i++)
+	public CopyTo(other: Array<T>, arrayIndex = 0, length?: number): void {
+		for (let i = 0; i < (length ?? this.length); i++)
 			other[i + arrayIndex] = this[i];
 	}
 	/**
