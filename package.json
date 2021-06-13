@@ -11,7 +11,7 @@
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
 		"ready": "npm run document && npm run lint",
 		"build": "Del dist /S /Q && npm run prepare",
-		"prepare": "tsc"
+		"prepublishOnly": "tsc"
 	},
 	"repository": {
 		"type": "git",
@@ -38,6 +38,6 @@
 		"eslint-plugin-jsdoc": "^32.3.0",
 		"prettier": "^2.2.1",
 		"typedoc": "^0.20.36",
-		"typescript": "^4.3.2"
+		"typescript": "4.2.4"
 	}
 }
