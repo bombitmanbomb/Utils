@@ -7,3 +7,4 @@ export { TimeSpan } from "./TimeSpan";
 export { Enumerable } from "./Enumerable";
 export { Uri } from "./Uri";
 export { StringBuilder } from "./StringBuilder";
+export { Ref } from "./Ref"
