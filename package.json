@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
 		"ready": "npm run document && npm run lint",
-		"build": "Del dist /S /Q && npm run prepublishOnly",
+		"build": "Del lib /S /Q && npm run prepublishOnly",
 		"prepublishOnly": "tsc"
 	},
 	"repository": {
