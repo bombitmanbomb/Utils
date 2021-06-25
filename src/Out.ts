@@ -1,9 +1,10 @@
 /**
  * Out Support Class
  */
-export class Out<T> {
+export class Out<T> extends Array<T> {
 	Out?: T;
 	constructor(Out?: T) {
+		super();
 		if (Out != null) {
 			this.Out = Out;
 		}
