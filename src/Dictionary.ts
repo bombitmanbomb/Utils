@@ -4,12 +4,11 @@ import { Enumerator } from "./Enumerator";
  * @class Dictionary
  * @extends {Array}
  */
-export class Dictionary<T extends string | number, A> extends Array {
-	private hash: Hash;
+export class Dictionary<T, A> extends Array {
+	private hash!: Map<T, number>
 	constructor() {
 		super();
-		this.hash = {};
-		Object.defineProperty(this, "hash", { value: {}, enumerable: false });
+		Object.defineProperty(this, "hash", { value: new Map, enumerable: false });
 	}
 	/**
 	 * Add a key to the Dictionary.
@@ -20,7 +19,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 			throw new Error(
 				"ArgumentException: An element with the same key already exists"
 			);
-		this.hash[Key.toString()] = this.push({ Key, Value }) - 1;
+		this.hash.set(Key, this.push({ Key, Value }) - 1)
 		return true;
 	}
 
@@ -45,7 +44,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 */
 	public ContainsKey(Key: T): boolean {
 		if (Key == null) return false;
-		if (this.hash[Key.toString()] != null) return true;
+		if (this.hash.has(Key)) return true;
 		return false;
 	}
 
@@ -63,7 +62,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 */
 	public Replace(Key: T, Value: A): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		this[this.hash[Key.toString()]].Value = Value;
+		this[this.hash.get(Key) as number].Value = Value;
 		return true;
 	}
 
@@ -93,7 +92,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 */
 	public Remove(Key: T, out: Out<A> = []): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		out.Out = this.RemoveAt(this.hash[Key.toString()]).Value;
+		out.Out = this.RemoveAt(this.hash.get(Key) as number).Value;
 		return true;
 	}
 
@@ -102,7 +101,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 */
 	public TryRemove(Key: T, out: Out<A> = []): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		out.Out = this.RemoveAt(this.hash[Key.toString()]).Value;
+		out.Out = this.RemoveAt(this.hash.get(Key) as number).Value;
 		return this.Remove(Key);
 	}
 	/**
@@ -117,7 +116,7 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 */
 	public Get(Key: T, Out: Out<A>): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		Out.Out = this[this.hash[Key.toString()]].Value;
+		Out.Out = this[this.hash.get(Key) as number].Value;
 		return true;
 	}
 
@@ -126,11 +125,11 @@ export class Dictionary<T extends string | number, A> extends Array {
 	 * Only use this if you know what you're doing
 	 */
 	public ValidateHash(): true {
-		this.hash = {};
+		this.hash = new Map
 		for (let i = 0; i < this.Count; i++) {
 			const key = this[i]?.Key?.toString();
 			if (key == null) continue;
-			this.hash[key] = i;
+			this.hash.set(key, i);
 		}
 		return true;
 	}
@@ -231,9 +230,6 @@ export class Dictionary<T extends string | number, A> extends Array {
 		}
 		return response;
 	}
-}
-interface Hash {
-	[prop: string]: number;
 }
 
 interface Entry<T, A> {
