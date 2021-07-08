@@ -11,6 +11,8 @@ export class Dictionary<T, A> extends Array {
 		Object.defineProperty(this, "hash", {
 			value: new Map(),
 			enumerable: false,
+			configurable:true,
+			writable:true
 		});
 	}
 	/**
