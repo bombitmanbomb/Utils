@@ -1,7 +1,7 @@
-export class Ref<T> extends Array<T>{
+export class Ref<T> extends Array<T> {
 	Value?: T;
 	constructor($b?: T) {
-    super()
+		super();
 		this.Value = $b;
 	}
 }

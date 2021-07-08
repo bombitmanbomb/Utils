@@ -5,10 +5,13 @@ import { Enumerator } from "./Enumerator";
  * @extends {Array}
  */
 export class Dictionary<T, A> extends Array {
-	private hash!: Map<T, number>
+	private hash!: Map<T, number>;
 	constructor() {
 		super();
-		Object.defineProperty(this, "hash", { value: new Map, enumerable: false });
+		Object.defineProperty(this, "hash", {
+			value: new Map(),
+			enumerable: false,
+		});
 	}
 	/**
 	 * Add a key to the Dictionary.
@@ -19,7 +22,7 @@ export class Dictionary<T, A> extends Array {
 			throw new Error(
 				"ArgumentException: An element with the same key already exists"
 			);
-		this.hash.set(Key, this.push({ Key, Value }) - 1)
+		this.hash.set(Key, this.push({ Key, Value }) - 1);
 		return true;
 	}
 
@@ -125,7 +128,7 @@ export class Dictionary<T, A> extends Array {
 	 * Only use this if you know what you're doing
 	 */
 	public ValidateHash(): true {
-		this.hash = new Map
+		this.hash = new Map();
 		for (let i = 0; i < this.Count; i++) {
 			const key = this[i]?.Key?.toString();
 			if (key == null) continue;
