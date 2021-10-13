@@ -2,8 +2,8 @@ import { CancellationTokenSource } from "./CancellationTokenSource";
 export class TaskCompletionSource<TResult> {
 	public Status: string;
 	public Task: Promise<TResult>;
-	private res!:(response:TResult | PromiseLike<TResult>)=>void;
-	private rej!:(error?:Error|string)=>void;
+	private res!: (response: TResult | PromiseLike<TResult>) => void;
+	private rej!: (error?: Error | string) => void;
 	public SetCanceled(cancellationToken?: CancellationTokenSource): void {
 		if (
 			this.Status == "Canceled" ||

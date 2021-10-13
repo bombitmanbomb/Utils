@@ -11,8 +11,8 @@ export class Dictionary<T, A> extends Array {
 		Object.defineProperty(this, "hash", {
 			value: new Map(),
 			enumerable: false,
-			configurable:true,
-			writable:true
+			configurable: true,
+			writable: true,
 		});
 	}
 	/**
@@ -229,9 +229,9 @@ export class Dictionary<T, A> extends Array {
 	}
 
 	public toJSON(): { [prop: string]: A } {
-		const response = {};
+		const response: any = {};
 		for (const property of this) {
-			Object.defineProperty(response, property.Key, { value: property.Value });
+			response[property.Key] = property.Value;
 		}
 		return response;
 	}

@@ -1,4 +1,4 @@
-export { TaskCompletionSource } from './TaskCompletionSource';
+export { TaskCompletionSource } from "./TaskCompletionSource";
 export { CancellationTokenSource } from "./CancellationTokenSource";
 export { Dictionary } from "./Dictionary";
 export { Enumerator } from "./Enumerator";
