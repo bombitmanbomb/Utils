@@ -37,7 +37,7 @@ export class Uri {
 	public get Query(): string {
 		return this._raw.query
 			? "?" + this._raw.query
-			: ((null as unknown) as string);
+			: (null as unknown as string);
 	}
 }
 function uri_parse(uriString: string): Component {
@@ -54,7 +54,7 @@ function uri_parse(uriString: string): Component {
 		components.query = matches[7];
 		components.fragment = matches[8];
 		if (isNaN(components.port)) {
-			components.port = (matches[5] as unknown) as number;
+			components.port = matches[5] as unknown as number;
 		}
 	} else {
 		components.error = components.error ?? "URI can not be parsed.";

@@ -24,7 +24,7 @@ export class Enumerable<T extends string | number> extends Object {
 	 */
 	public GetValue(Key: T): string | number {
 		const { [Key]: Identifier } = this;
-		return (Identifier as unknown) as string | number;
+		return Identifier as unknown as string | number;
 	}
 
 	public FromNumber(index: number): string | undefined {
