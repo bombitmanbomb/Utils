@@ -15,8 +15,8 @@ export class List<T> extends Array {
 			return;
 		}
 		if (props.length === 1 && typeof props[0] == "number") {
-			super((props[0] as unknown) as number);
-			this.Capacity = (props[0] as unknown) as number;
+			super(props[0] as unknown as number);
+			this.Capacity = props[0] as unknown as number;
 			this.Filled = 0;
 			return;
 		}
@@ -125,7 +125,7 @@ export class List<T> extends Array {
 		if (this.Filled > this.Capacity) {
 			this.Capacity += this.Filled - this.Capacity;
 		} else if (this.Capacity > this.length) {
-			while (this.length < this.Capacity) this.push((void 0 as unknown) as T);
+			while (this.length < this.Capacity) this.push(void 0 as unknown as T);
 		} else
 			while (this.Capacity < this.length) {
 				const next = this.NextFree();

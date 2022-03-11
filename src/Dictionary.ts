@@ -232,11 +232,10 @@ export class Dictionary<T, A> extends Array {
 		const response: any = {};
 		for (const property of this) {
 			try {
-				response[property.Key] = property.Value.toJSON()
+				response[property.Key] = property.Value.toJSON();
 			} catch (error) {
 				response[property.Key] = property.Value;
 			}
-
 		}
 		return response;
 	}
