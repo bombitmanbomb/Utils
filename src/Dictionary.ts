@@ -231,7 +231,12 @@ export class Dictionary<T, A> extends Array {
 	public toJSON(): { [prop: string]: A } {
 		const response: any = {};
 		for (const property of this) {
-			response[property.Key] = property.Value;
+			try {
+				response[property.Key] = property.Value.toJSON()
+			} catch (error) {
+				response[property.Key] = property.Value;
+			}
+
 		}
 		return response;
 	}
