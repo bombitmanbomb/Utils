@@ -95,7 +95,7 @@ export class Dictionary<T, A> extends Array {
 	/**
 	 * Remove a value by Key
 	 */
-	public Remove(Key: T, out: Out<A> = []): boolean {
+	public Remove(Key: T, out: Out<A> = new Out): boolean {
 		if (!this.ContainsKey(Key)) return false;
 		out.Out = this.RemoveAt(this.hash.get(Key) as number).Value;
 		return true;
@@ -104,7 +104,7 @@ export class Dictionary<T, A> extends Array {
 	/**
 	 * Try and remove a value
 	 */
-	public TryRemove(Key: T, out: Out<A> = []): boolean {
+	public TryRemove(Key: T, out: Out<A> = new Out): boolean {
 		if (!this.ContainsKey(Key)) return false;
 		out.Out = this.RemoveAt(this.hash.get(Key) as number).Value;
 		return this.Remove(Key);

@@ -24,7 +24,7 @@ export class CancellationTokenSource {
 		return this;
 	}
 	get signal(): AbortSignal {
-		return this.controller.signal;
+		return this.controller.signal as AbortSignal;
 	}
 	get aborted(): boolean {
 		return this._cancel;
