@@ -1,5 +1,6 @@
 import { Out } from "./Out";
 import { Enumerator } from "./Enumerator";
+import { CustomError } from "./CustomError";
 /** Dictionary Hash List
  * @class Dictionary
  * @extends {Array}
@@ -21,9 +22,7 @@ export class Dictionary<T, A> extends Array {
 	public Add(Key: T, Value: A): boolean {
 		if (Key == null) return false;
 		if (this.ContainsKey(Key))
-			throw new Error(
-				"ArgumentException: An element with the same key already exists"
-			);
+			throw new CustomError("ArgumentException","An element with the same key already exists");
 		this.hash.set(Key, this.push({ Key, Value }) - 1);
 		return true;
 	}
