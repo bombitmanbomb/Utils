@@ -1,5 +1,6 @@
 import { Out } from "./Out";
 import { Enumerator } from "./Enumerator";
+import { CustomError } from "./CustomError";
 
 /**
  * List Class
@@ -83,9 +84,9 @@ export class List<T> extends Array {
 	 * Add a range of values
 	 */
 	public AddRange(range: List<T>): number {
-		if (range == null) throw new Error("ArgumentNullException");
+		if (range == null) throw new CustomError("ArgumentNullException", "range");
 		if (!(range instanceof List))
-			throw new Error("AddRange: Expected type List");
+			throw new CustomError("ArgumentException","Expected type List");
 		for (const item of range) {
 			this.Add(item);
 		}

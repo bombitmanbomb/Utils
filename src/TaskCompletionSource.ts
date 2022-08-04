@@ -1,4 +1,5 @@
 import { CancellationTokenSource } from "./CancellationTokenSource";
+import { CustomError } from "./CustomError";
 export class TaskCompletionSource<TResult> {
 	public Status: string;
 	public Task: Promise<TResult>;
@@ -10,7 +11,7 @@ export class TaskCompletionSource<TResult> {
 			this.Status == "Faulted" ||
 			this.Status == "RanToCompletion"
 		)
-			throw new Error("InvalidOperationException");
+			throw new CustomError("InvalidOperationException", null);
 		if (cancellationToken != null) {
 			cancellationToken.signal.addEventListener(
 				"abort",
@@ -35,7 +36,7 @@ export class TaskCompletionSource<TResult> {
 			this.Status == "Faulted" ||
 			this.Status == "Canceled"
 		)
-			throw new Error("InvalidOperationException");
+			throw new CustomError("InvalidOperationException", null);
 		this.Status = "RanToCompletion";
 		this.res(result);
 	}

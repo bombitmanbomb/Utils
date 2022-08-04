@@ -1,3 +1,4 @@
+import { CustomError } from "./CustomError";
 import { List } from "./List";
 /**
  * Enumerable Util Class (for Non TS)
@@ -15,7 +16,7 @@ export class Enumerable<T extends string | number> extends Object {
 				Object.defineProperty(this, keys[i], { value: list[keys[i]] });
 			}
 		} else {
-			throw new Error("Invalid Data, Expected type: <Array, List, Object>");
+			throw new CustomError("InvalidConstructor", "Expected type: <Array, List, Object>");
 		}
 		Object.freeze(this);
 	}
