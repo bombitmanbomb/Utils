@@ -86,7 +86,7 @@ export class List<T> extends Array {
 	public AddRange(range: List<T>): number {
 		if (range == null) throw new CustomError("ArgumentNullException", "range");
 		if (!(range instanceof List))
-			throw new CustomError("ArgumentException","Expected type List");
+			throw new CustomError("ArgumentException", "Expected type List");
 		for (const item of range) {
 			this.Add(item);
 		}

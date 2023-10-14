@@ -24,7 +24,7 @@ export class TimeSpan {
 	 */
 	public static Delay(
 		timespan: TimeSpan | number,
-		token?: CancellationTokenSource
+		token?: CancellationTokenSource,
 	): Promise<null> {
 		let Time: TimeSpan;
 		if (!(timespan instanceof TimeSpan)) {

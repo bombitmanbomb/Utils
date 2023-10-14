@@ -1,4 +1,4 @@
-export { CustomError } from './CustomError';
+export { CustomError } from "./CustomError";
 export { TaskCompletionSource } from "./TaskCompletionSource";
 export { CancellationTokenSource } from "./CancellationTokenSource";
 export { Dictionary } from "./Dictionary";

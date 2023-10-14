@@ -8,7 +8,7 @@ export class CancellationTokenSource {
 		this._cancel = false;
 		this.controller = new AbortController();
 		this.abort = this.abort.bind(this);
-		this.controller.signal.addEventListener("onAbort", this._byEvent)
+		this.controller.signal.addEventListener("onAbort", this._byEvent);
 		if (timeout != null) {
 			if (typeof timeout === "number") {
 				setTimeout(this.abort, timeout);
@@ -17,9 +17,9 @@ export class CancellationTokenSource {
 			}
 		}
 	}
-	_byEvent(){
-		this._cancel = true
-		this.controller.signal.removeEventListener("onAbort", this._byEvent)
+	_byEvent() {
+		this._cancel = true;
+		this.controller.signal.removeEventListener("onAbort", this._byEvent);
 	}
 	abort(): void {
 		this._cancel = true;

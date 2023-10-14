@@ -43,7 +43,7 @@ export class Uri {
 function uri_parse(uriString: string): Component {
 	const components: Component = { path: "" };
 	const matches = uriString.match(
-		/^(?:([^:/?#]+):)?(?:\/\/((?:([^/?#@]*)@)?(\[[^/?#\]]+\]|[^/?#:]*)(?::(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n|\r)*))?/i
+		/^(?:([^:/?#]+):)?(?:\/\/((?:([^/?#@]*)@)?(\[[^/?#\]]+\]|[^/?#:]*)(?::(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n|\r)*))?/i,
 	);
 	if (matches) {
 		components.scheme = matches[1];

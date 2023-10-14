@@ -19,7 +19,7 @@ export class TaskCompletionSource<TResult> {
 					this.Status = "Canceled";
 					this.rej();
 				},
-				true
+				true,
 			);
 		} else {
 			this.Status = "Cancelled";
