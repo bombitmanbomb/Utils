@@ -23,7 +23,7 @@
 		"no-mixed-spaces-and-tabs": "off",
 		"@typescript-eslint/no-explicit-any": "off"
 	},
-	"plugins": ["jsdoc", "@typescript-eslint"],
+	"plugins": ["@typescript-eslint"],
 	"settings": {
 		"jsdoc": {
 			"mode": "typescript"

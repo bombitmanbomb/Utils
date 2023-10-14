@@ -5,26 +5,27 @@ import { CustomError } from "./CustomError";
  * @class Dictionary
  * @extends {Array}
  */
-export class Dictionary<T, A> extends Array {
+export class Dictionary<T, A> extends Map<T, A> {
 	private hash!: Map<T, number>;
-	constructor() {
-		super();
-		Object.defineProperty(this, "hash", {
-			value: new Map(),
-			enumerable: false,
-			configurable: true,
-			writable: true,
-		});
+	constructor(dict: Iterable<readonly [T, A]> | null | undefined = void 0) {
+		super(dict);
 	}
 	/**
 	 * Add a key to the Dictionary.
 	 */
 	public Add(Key: T, Value: A): boolean {
 		if (Key == null) return false;
-		if (this.ContainsKey(Key))
-			throw new CustomError("ArgumentException","An element with the same key already exists");
-		this.hash.set(Key, this.push({ Key, Value }) - 1);
+		if (this.has(Key))
+			throw new CustomError(
+				"ArgumentException",
+				"An element with the same key already exists",
+			);
+		this.set(Key, Value);
 		return true;
+	}
+
+	*IteratorList() {
+		for (const Key of this.keys()) yield { Key, Value: this.get(Key) as A };
 	}
 
 	/**
@@ -40,15 +41,14 @@ export class Dictionary<T, A> extends Array {
 	 * Clear the Dictionary.
 	 */
 	public Clear(): void {
-		this.splice(0, this.length);
-		this.ValidateHash();
+		this.clear();
 	}
 	/**
 	 * Check if a key exists.
 	 */
 	public ContainsKey(Key: T): boolean {
 		if (Key == null) return false;
-		if (this.hash.has(Key)) return true;
+		if (this.has(Key)) return true;
 		return false;
 	}
 
@@ -56,17 +56,17 @@ export class Dictionary<T, A> extends Array {
 	 * Check how many items match a predicate.
 	 */
 	public CheckCount(
-		predicate: (value: any, index: number, array: any[]) => unknown
+		predicate: (value: any, index: number, array: any[]) => unknown,
 	): number {
-		if (predicate == null) return this.length;
-		return this.filter(predicate).length;
+		if (predicate == null) return this.size;
+		return Array.from(this.entries()).filter(predicate).length;
 	}
 	/**
 	 * Replace the value in a key
 	 */
 	public Replace(Key: T, Value: A): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		this[this.hash.get(Key) as number].Value = Value;
+		this.set(Key, Value);
 		return true;
 	}
 
@@ -74,67 +74,38 @@ export class Dictionary<T, A> extends Array {
 	 * Check if the dictionary contains a Value
 	 */
 	public ContainsValue(Value: A): boolean {
-		for (const object of this) {
-			if (object.Value === Value) return true;
-		}
-		return false;
+		return Array.from(this.values()).some((v) => v == Value);
 	}
 
 	/**
-	 * Remove an Index
-	 */
-	private RemoveAt(iIndex: number): Entry<T, A> {
-		const vItem = this[iIndex];
-		if (vItem) {
-			this.splice(iIndex, 1);
-		}
-		this.ValidateHash();
-		return vItem;
-	}
-	/**
 	 * Remove a value by Key
 	 */
-	public Remove(Key: T, out: Out<A> = new Out): boolean {
+	public Remove(Key: T, out: Out<A> = new Out()): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		out.Out = this.RemoveAt(this.hash.get(Key) as number).Value;
+		out.Out = this.get(Key) as A;
+		this.delete(Key);
 		return true;
 	}
 
 	/**
 	 * Try and remove a value
 	 */
-	public TryRemove(Key: T, out: Out<A> = new Out): boolean {
-		if (!this.ContainsKey(Key)) return false;
-		out.Out = this.RemoveAt(this.hash.get(Key) as number).Value;
-		return this.Remove(Key);
+	public TryRemove(Key: T, out: Out<A> = new Out()): boolean {
+		return this.Remove(Key, out);
 	}
 	/**
 	 * The Item Count
 	 */
 	public get Count(): number {
-		return this.length;
+		return this.size;
 	}
 
 	/**
 	 * Get an item.
 	 */
-	public Get(Key: T, Out: Out<A>): boolean {
+	public Get(Key: T, out: Out<A> = new Out()): boolean {
 		if (!this.ContainsKey(Key)) return false;
-		Out.Out = this[this.hash.get(Key) as number].Value;
-		return true;
-	}
-
-	/**
-	 * Validate and Update the internal hash.
-	 * Only use this if you know what you're doing
-	 */
-	public ValidateHash(): true {
-		this.hash = new Map();
-		for (let i = 0; i < this.Count; i++) {
-			const key = this[i]?.Key?.toString();
-			if (key == null) continue;
-			this.hash.set(key, i);
-		}
+		out.Out = this.get(Key) as A;
 		return true;
 	}
 
@@ -163,7 +134,7 @@ export class Dictionary<T, A> extends Array {
 			[prop: string]: any;
 			[prop: number]: any;
 		},
-		constructor: any
+		constructor: any,
 	): Dictionary<string, any> {
 		const Dict: Dictionary<string, any> = new Dictionary();
 		try {
@@ -186,7 +157,7 @@ export class Dictionary<T, A> extends Array {
 	public AddOrUpdate(
 		Key: T,
 		Value: A,
-		ReplaceFunc: (Key: T, OldValue: A) => A
+		ReplaceFunc: (Key: T, OldValue: A) => A,
 	): A {
 		if (!this.ContainsKey(Key)) {
 			this.TryAdd(Key, Value);
@@ -229,19 +200,13 @@ export class Dictionary<T, A> extends Array {
 
 	public toJSON(): { [prop: string]: A } {
 		const response: any = {};
-		for (const property of this) {
+		for (const property of this.entries()) {
 			try {
-				response[property.Key] = property.Value.toJSON();
+				response[property[0]] = (property[1] as any).toJSON();
 			} catch (error) {
-				response[property.Key] = property.Value;
+				response[property[0]] = property[1];
 			}
 		}
 		return response;
 	}
-}
-
-interface Entry<T, A> {
-	Key: T;
-	Value: A;
-	Error?: true;
 }

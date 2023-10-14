@@ -16,7 +16,10 @@ export class Enumerable<T extends string | number> extends Object {
 				Object.defineProperty(this, keys[i], { value: list[keys[i]] });
 			}
 		} else {
-			throw new CustomError("InvalidConstructor", "Expected type: <Array, List, Object>");
+			throw new CustomError(
+				"InvalidConstructor",
+				"Expected type: <Array, List, Object>",
+			);
 		}
 		Object.freeze(this);
 	}

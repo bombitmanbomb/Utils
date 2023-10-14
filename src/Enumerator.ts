@@ -33,7 +33,7 @@ export class Enumerator<T extends Dictionary<any, any> | List<any>> {
 		if (this.Struct instanceof List) {
 			this.Current = this.Struct[this.Position];
 		} else if (this.Struct instanceof Dictionary) {
-			this.Current = this.Struct[this.Position].Value;
+			this.Current = Array.from(this.Struct.entries())[this.Position][1]; //Dislike
 		} else {
 			this.Current = null;
 			return false;
