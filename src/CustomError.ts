@@ -8,12 +8,6 @@ export class CustomError extends Error {
 		(this as any)[kCode as unknown as string] = type;
 		if ((Error as any).captureStackTrace)
 			(Error as any).captureStackTrace(this, CustomError);
-		this.stack = this.stack
-			?.split("\n")
-			.filter(function (line, index) {
-				return index !== 1;
-			})
-			.join("\n");
 	}
 
 	get name() {
@@ -26,5 +20,15 @@ export class CustomError extends Error {
 
 	get message() {
 		return super.message ?? "No Message";
+	}
+
+	public raiseTrace(amount: number = 1) {
+		this.stack = this.stack
+			?.split("\n")
+			.filter(function (line, index) {
+				return index > 0 && index <= amount;
+			})
+			.join("\n");
+		return this;
 	}
 }
