@@ -8,6 +8,7 @@ export class CustomError extends Error {
 		(this as any)[kCode as unknown as string] = type;
 		if ((Error as any).captureStackTrace)
 			(Error as any).captureStackTrace(this, CustomError);
+		this.raiseTrace();
 	}
 
 	get name() {
