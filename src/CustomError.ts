@@ -26,7 +26,7 @@ export class CustomError extends Error {
 		this.stack = this.stack
 			?.split("\n")
 			.filter(function (line, index) {
-				return index > 0 && index <= amount;
+				return !(index > 0 && index <= amount);
 			})
 			.join("\n");
 		return this;
